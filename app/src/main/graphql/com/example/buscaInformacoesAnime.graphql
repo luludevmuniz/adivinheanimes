@@ -1,0 +1,26 @@
+query buscaInformacoesAnime($popularity_greater: Int!) {
+    Media(popularity_greater: $popularity_greater) {
+    id
+    title{
+        romaji
+        english
+    }
+    coverImage{
+        extraLarge
+    }
+    }
+}
+
+query buscaMaiorPopularidade($id: Int!) {
+    Media(id: $id) {
+    popularity
+    }
+}
+
+query buscarImagemAnime($search: String!) {
+    Media (search: $search) {
+    coverImage{
+    extraLarge
+    }
+    }
+}

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".JogoActivity">
+
+    <ImageView
+        android:id="@+id/jogo_imagem_anime"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:src="@drawable/saber_background"
+        app:layout_constraintBottom_toTopOf="@id/jogo_descricao_anime"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:scaleType="fitXY"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/jogo_descricao_anime"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="24dp"
+        tools:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        app:layout_constraintBottom_toTopOf="@id/jogo_botao_resposta1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/jogo_imagem_anime"
+        android:textColor="@color/black"
+        android:visibility="gone"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/jogo_botao_resposta1"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="30dp"
+        android:maxLines="2"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/jogo_botao_resposta2"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="Fate/stay night: Unlimited Blade Works" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/jogo_botao_resposta2"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="30dp"
+        android:maxLines="2"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/jogo_botao_resposta1"
+        tools:text="Houseki no Kuni" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/jogo_botao_resposta3"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="30dp"
+        android:maxLines="2"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@id/jogo_botao_resposta4"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:text="Bem" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/jogo_botao_resposta4"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="30dp"
+        android:maxLines="2"
+        android:textAllCaps="false"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/jogo_botao_resposta3"
+        tools:text="Banana fish" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
