@@ -15,14 +15,11 @@ import com.example.BuscarImagemAnimeQuery;
 import org.jetbrains.annotations.NotNull;
 
 public class InformacoesJogo extends AppCompatActivity {
-    String tituloAnimeIngles;
     String tituloAnimeRomaji;
-    String descricaoAnime;
     String imagemAnime;
     int popularidade;
     int idAnime;
     int numeroAnime = 0;
-    int[] idsAnimes = new int[4];
 
     public void pegaInformacoesAnime(int popularidade) {
         try {
@@ -34,7 +31,6 @@ public class InformacoesJogo extends AppCompatActivity {
                     .enqueue(new ApolloCall.Callback<BuscaInformacoesAnimeQuery.Data>() {
                         @Override
                         public void onResponse(@NotNull Response<BuscaInformacoesAnimeQuery.Data> response) {
-                            tituloAnimeIngles = response.getData().Media().title().english();
                             tituloAnimeRomaji = response.getData().Media().title().romaji();
                             idAnime = response.getData().Media().id();
                             imagemAnime = response.getData().Media().coverImage().extraLarge();
@@ -95,6 +91,13 @@ public class InformacoesJogo extends AppCompatActivity {
         {
             Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG);
         }
+    }
+
+    public void clear(){
+        tituloAnimeRomaji = null;
+        imagemAnime = null;
+        popularidade = 0;
+        idAnime = 0;
     }
 }
 

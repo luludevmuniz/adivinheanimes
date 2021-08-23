@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static int vezesJogada;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,7 +17,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void iniciarJogo(View view) {
-        Intent irParaJogoActivity = new Intent(this, JogoActivity.class);
-        startActivity(irParaJogoActivity);
+        try {
+            Intent irParaJogoActivity = new Intent(this, ConfiguracoesJogoActivity.class);
+            startActivity(irParaJogoActivity);
+        } catch(Exception e){
+            System.out.println(e);
+        }
     }
 }

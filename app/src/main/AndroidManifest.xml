@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Adivinheanimes"
         android:usesCleartextTraffic="true">
-        <activity android:name=".FimDoJogoActivity"></activity>
+        <activity android:name=".ConfiguracoesJogoActivity"></activity>
+        <activity android:name=".FimDoJogoActivity" />
         <activity android:name=".JogoActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

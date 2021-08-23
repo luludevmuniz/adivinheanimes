@@ -12,8 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="290dp"
         android:layout_marginStart="39dp"
-        android:text="Parabéns! You Rock!"
+        android:text="Morra otakolol"
         android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

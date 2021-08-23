@@ -3,7 +3,6 @@ query buscaInformacoesAnime($popularity_greater: Int!) {
     id
     title{
         romaji
-        english
     }
     coverImage{
         extraLarge
