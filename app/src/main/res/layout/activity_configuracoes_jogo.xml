@@ -6,4 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".ConfiguracoesJogoActivity">
 
+<!--    <include layout= "@layout/animacao_carregando"/>-->
+
 </androidx.constraintlayout.widget.ConstraintLayout>

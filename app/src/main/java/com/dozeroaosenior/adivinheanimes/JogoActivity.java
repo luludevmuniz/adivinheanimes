@@ -1,17 +1,25 @@
 package com.dozeroaosenior.adivinheanimes;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 
 import java.util.Random;
+
+import static com.dozeroaosenior.adivinheanimes.MainActivity.vezesJogada;
 
 public class JogoActivity extends AppCompatActivity {
     AppCompatButton botaoUm;
@@ -25,62 +33,36 @@ public class JogoActivity extends AppCompatActivity {
     int numeroBotaoAleatorio;
     String tituloAnimeCerto;
     EstruturaAnime[] estruturaAnimes = new EstruturaAnime[4];
+    EstruturaAnime[] proximaEstruturaAnimes = new EstruturaAnime[4];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         try {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_jogo);
-            capturaComponentesTela();
-            if (getIntent().hasExtra("estruturaAnime4")) {
-                configuraProximoDesafio();
-            }
         } catch (Exception e) {
             System.out.println(e.toString());
         }
     }
 
-    private void configuraProximoDesafio() {
-        recebeInformacoesNovoDesafio();
-        configuraBotoesNovoDesafio();
-        verificaRespostaBotoes();
+    @Override
+    protected void onStart() {
+        super.onStart();
+        capturaComponentesTela();
     }
 
-    private void configuraBotoesNovoDesafio() {
-        configuraTituloCertoNovoDesafio();
-        configuraTextoBotoesNovoDesafio();
-        configuraImagemNovoDesafio();
+    @Override
+    protected void onResume() {
+        super.onResume();
+        configuraDesafio();
+        new Thread(() -> {
+            runOnUiThread(this::chamaConfiguracoesNovoJogo);
+        }).start();
     }
 
-    private void configuraTituloCertoNovoDesafio() {
-        numeroBotaoAleatorio = random.nextInt(4);
-        tituloAnimeCerto = estruturaAnimes[numeroBotaoAleatorio].titulo;
-    }
-
-    private void configuraTextoBotoesNovoDesafio() {
-        botaoUm.setText(estruturaAnimes[0].getTitulo());
-        botaoDois.setText(estruturaAnimes[1].getTitulo());
-        botaoTres.setText(estruturaAnimes[2].getTitulo());
-        botaoQuatro.setText(estruturaAnimes[3].getTitulo());
-    }
-
-    private void configuraImagemNovoDesafio() {
-        if (botaoUm.getText().equals(tituloAnimeCerto)) {
-            Picasso.get().load(estruturaAnimes[0].getImagem()).into(imagemAnime);
-        } else if (botaoDois.getText().equals(tituloAnimeCerto)) {
-            Picasso.get().load(estruturaAnimes[1].getImagem()).into(imagemAnime);
-        } else if (botaoTres.getText().equals(tituloAnimeCerto)) {
-            Picasso.get().load(estruturaAnimes[2].getImagem()).into(imagemAnime);
-        } else if (botaoQuatro.getText().equals(tituloAnimeCerto)) {
-            Picasso.get().load(estruturaAnimes[3].getImagem()).into(imagemAnime);
-        }
-    }
-
-    private void recebeInformacoesNovoDesafio() {
-        estruturaAnimes[0] = getIntent().getParcelableExtra("estruturaAnime1");
-        estruturaAnimes[1] = getIntent().getParcelableExtra("estruturaAnime2");
-        estruturaAnimes[2] = getIntent().getParcelableExtra("estruturaAnime3");
-        estruturaAnimes[3] = getIntent().getParcelableExtra("estruturaAnime4");
+    private void chamaConfiguracoesNovoJogo() {
+        ConfiguraCamposJogo configuraCamposJogo = new ConfiguraCamposJogo();
+        proximaEstruturaAnimes = configuraCamposJogo.fazRequisicaoNovoDesafio();
     }
 
     private void capturaComponentesTela() {
@@ -90,6 +72,48 @@ public class JogoActivity extends AppCompatActivity {
         botaoQuatro = findViewById(R.id.jogo_botao_resposta4);
         descricaoAnime = findViewById(R.id.jogo_descricao_anime);
         imagemAnime = findViewById(R.id.jogo_imagem_anime);
+    }
+
+    private void configuraDesafio() {
+        recebeInformacoesDesafio();
+        configuraBotoesDesafio();
+        verificaRespostaBotoes();
+    }
+
+    private void configuraBotoesDesafio() {
+        configuraAnimeCertoDesafio();
+        configuraTextoBotoesDesafio();
+    }
+
+    private void configuraAnimeCertoDesafio() {
+        CircularProgressDrawable circularProgressDrawable = new CircularProgressDrawable(this);
+        circularProgressDrawable.setStrokeWidth(5f);
+        circularProgressDrawable.setCenterRadius(30f);
+        circularProgressDrawable.start();
+        numeroBotaoAleatorio = random.nextInt(4);
+        tituloAnimeCerto = estruturaAnimes[numeroBotaoAleatorio].titulo;
+//        Picasso.get().load(estruturaAnimes[numeroBotaoAleatorio].getImagem()).into(imagemAnime);
+        Glide.with(this).
+                load(estruturaAnimes[numeroBotaoAleatorio].getImagem())
+                .priority(Priority.IMMEDIATE)
+                .placeholder(circularProgressDrawable)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .into(imagemAnime);
+
+    }
+
+    private void configuraTextoBotoesDesafio() {
+        botaoUm.setText(estruturaAnimes[0].getTitulo());
+        botaoDois.setText(estruturaAnimes[1].getTitulo());
+        botaoTres.setText(estruturaAnimes[2].getTitulo());
+        botaoQuatro.setText(estruturaAnimes[3].getTitulo());
+    }
+
+    private void recebeInformacoesDesafio() {
+            Parcelable[] estruturaAnime = getIntent().getParcelableArrayExtra("estruturaAnime");
+            for (int indice = 0; indice < 4; indice++) {
+                estruturaAnimes[indice] = (EstruturaAnime) estruturaAnime[indice];
+            }
     }
 
     private void verificaRespostaBotoes() {
@@ -107,11 +131,30 @@ public class JogoActivity extends AppCompatActivity {
         try {
             botao.setOnClickListener(v -> {
                 if (botao.getText().equals(tituloAnimeCerto)) {
-                     Intent intent = new Intent(JogoActivity.this, ConfiguracoesJogoActivity.class);
+                    botao.setBackgroundColor(Color.GREEN);
+                    if(vezesJogada < 5) {
+                        while (proximaEstruturaAnimes == null) {
+                        }
+                        vezesJogada++;
+                        Intent intent;
+                        intent = new Intent(this, JogoActivity.class);
+                        intent.putExtra("estruturaAnime", proximaEstruturaAnimes);
                         startActivity(intent);
                         finish();
+                    }
+                    else{
+                        Intent intent;
+                        intent = new Intent(this, FimDoJogoActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } else {
+                    botao.setBackgroundColor(Color.RED);
                     Toast.makeText(this, "Errou", Toast.LENGTH_SHORT).show();
+                    Intent intent;
+                    intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
                 }
             });
         } catch (Exception e) {

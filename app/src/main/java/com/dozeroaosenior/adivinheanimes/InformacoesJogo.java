@@ -10,7 +10,6 @@ import com.apollographql.apollo.api.Response;
 import com.apollographql.apollo.exception.ApolloException;
 import com.example.BuscaInformacoesAnimeQuery;
 import com.example.BuscaMaiorPopularidadeQuery;
-import com.example.BuscarImagemAnimeQuery;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -43,7 +42,7 @@ public class InformacoesJogo extends AppCompatActivity {
                     });
         } catch (Exception e)
         {
-            Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG);
+            Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -66,30 +65,7 @@ public class InformacoesJogo extends AppCompatActivity {
                     });
         } catch (Exception e)
         {
-            Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG);
-        }
-    }
-
-    public void pegaImagemAnime(String nomeAnime) {
-        try {
-            ApolloClient apolloClient = ApolloClient.builder()
-                    .serverUrl("https://graphql.anilist.co")
-                    .build();
-
-            apolloClient.query(new BuscarImagemAnimeQuery(nomeAnime))
-                    .enqueue(new ApolloCall.Callback<BuscarImagemAnimeQuery.Data>() {
-                        @Override
-                        public void onResponse(@NotNull Response<BuscarImagemAnimeQuery.Data> response) {
-                            imagemAnime = response.getData().Media().coverImage().extraLarge();
-                        }
-
-                        @Override
-                        public void onFailure(@NotNull ApolloException e) {
-                        }
-                    });
-        } catch (Exception e)
-        {
-            Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG);
+            Toast.makeText(getBaseContext(), e.toString(), Toast.LENGTH_LONG).show();
         }
     }
 

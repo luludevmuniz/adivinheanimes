@@ -2,7 +2,9 @@ package com.dozeroaosenior.adivinheanimes;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.VideoView;
 
 import static com.dozeroaosenior.adivinheanimes.MainActivity.vezesJogada;
 

@@ -15,11 +15,3 @@ query buscaMaiorPopularidade($id: Int!) {
     popularity
     }
 }
-
-query buscarImagemAnime($search: String!) {
-    Media (search: $search) {
-    coverImage{
-    extraLarge
-    }
-    }
-}
