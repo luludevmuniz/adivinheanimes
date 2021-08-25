@@ -1,6 +1,7 @@
 query buscaInformacoesAnime($popularity_greater: Int!) {
-    Media(popularity_greater: $popularity_greater) {
+    Media(popularity_greater: $popularity_greater, type: ANIME) {
     id
+    type
     title{
         romaji
     }
@@ -8,6 +9,7 @@ query buscaInformacoesAnime($popularity_greater: Int!) {
         extraLarge
     }
     }
+
 }
 
 query buscaMaiorPopularidade($id: Int!) {

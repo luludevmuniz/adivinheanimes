@@ -12,10 +12,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.Priority;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.squareup.picasso.Picasso;
 
 import java.util.Random;
 
@@ -92,14 +89,7 @@ public class JogoActivity extends AppCompatActivity {
         circularProgressDrawable.start();
         numeroBotaoAleatorio = random.nextInt(4);
         tituloAnimeCerto = estruturaAnimes[numeroBotaoAleatorio].titulo;
-//        Picasso.get().load(estruturaAnimes[numeroBotaoAleatorio].getImagem()).into(imagemAnime);
-        Glide.with(this).
-                load(estruturaAnimes[numeroBotaoAleatorio].getImagem())
-                .priority(Priority.IMMEDIATE)
-                .placeholder(circularProgressDrawable)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(imagemAnime);
-
+        Picasso.get().load(estruturaAnimes[numeroBotaoAleatorio].getImagem()).placeholder(circularProgressDrawable).into(imagemAnime);
     }
 
     private void configuraTextoBotoesDesafio() {
@@ -140,14 +130,13 @@ public class JogoActivity extends AppCompatActivity {
                         intent = new Intent(this, JogoActivity.class);
                         intent.putExtra("estruturaAnime", proximaEstruturaAnimes);
                         startActivity(intent);
-                        finish();
                     }
                     else{
                         Intent intent;
                         intent = new Intent(this, FimDoJogoActivity.class);
                         startActivity(intent);
-                        finish();
                     }
+                    finish();
                 } else {
                     botao.setBackgroundColor(Color.RED);
                     Toast.makeText(this, "Errou", Toast.LENGTH_SHORT).show();
