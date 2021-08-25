@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FimDoJogoActivity">
+    tools:context=".FimDoJogoActivity"
+    android:background="@color/black">
 
     <TextView
         android:id="@+id/textView"
@@ -12,10 +13,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="290dp"
         android:layout_marginStart="39dp"
-        android:text="You Rock!"
+        android:text="Work in Progress"
         android:textSize="32sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/white"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

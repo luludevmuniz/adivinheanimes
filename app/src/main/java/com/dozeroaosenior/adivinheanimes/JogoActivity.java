@@ -100,10 +100,10 @@ public class JogoActivity extends AppCompatActivity {
     }
 
     private void recebeInformacoesDesafio() {
-            Parcelable[] estruturaAnime = getIntent().getParcelableArrayExtra("estruturaAnime");
-            for (int indice = 0; indice < 4; indice++) {
-                estruturaAnimes[indice] = (EstruturaAnime) estruturaAnime[indice];
-            }
+        Parcelable[] estruturaAnime = getIntent().getParcelableArrayExtra("estruturaAnime");
+        for (int indice = 0; indice < 4; indice++) {
+            estruturaAnimes[indice] = (EstruturaAnime) estruturaAnime[indice];
+        }
     }
 
     private void verificaRespostaBotoes() {
@@ -121,8 +121,8 @@ public class JogoActivity extends AppCompatActivity {
         try {
             botao.setOnClickListener(v -> {
                 if (botao.getText().equals(tituloAnimeCerto)) {
-                    botao.setBackgroundColor(Color.GREEN);
-                    if(vezesJogada < 5) {
+                    botao.setBackgroundColor(Color.parseColor("#388e3c"));
+                    if (vezesJogada < 5) {
                         while (proximaEstruturaAnimes == null) {
                         }
                         vezesJogada++;
@@ -130,8 +130,7 @@ public class JogoActivity extends AppCompatActivity {
                         intent = new Intent(this, JogoActivity.class);
                         intent.putExtra("estruturaAnime", proximaEstruturaAnimes);
                         startActivity(intent);
-                    }
-                    else{
+                    } else {
                         Intent intent;
                         intent = new Intent(this, FimDoJogoActivity.class);
                         startActivity(intent);

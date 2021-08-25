@@ -4,80 +4,119 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".JogoActivity">
 
     <ImageView
         android:id="@+id/jogo_imagem_anime"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        tools:src="@drawable/saber_background"
-        app:layout_constraintBottom_toTopOf="@id/jogo_descricao_anime"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:scaleType="fitXY" />
+        app:layout_constraintVertical_bias="0"
+        tools:src="@drawable/saber_background" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/jogo_descricao_anime"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="24dp"
-        tools:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        android:textColor="@color/purple_700"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/jogo_botao_resposta1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/jogo_imagem_anime"
-        android:textColor="@color/black"
-        android:visibility="gone"/>
+        tools:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/jogo_botao_resposta1"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="30dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/cor_primaria"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
         android:maxLines="2"
         android:textAllCaps="false"
         android:textSize="12sp"
+        app:cornerRadius="15dp"
         app:layout_constraintBottom_toTopOf="@id/jogo_botao_resposta2"
+        app:layout_constraintHeight_percent="0.14"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintWidth_percent="0.47"
+        app:strokeColor="@color/cor_secundaria"
+        app:strokeWidth="2dp"
         tools:text="Fate/stay night: Unlimited Blade Works" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/jogo_botao_resposta2"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="30dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/cor_primaria"
+        android:insetTop="0dp"
+        android:insetRight="0dp"
+        android:insetBottom="0dp"
         android:maxLines="2"
         android:textAllCaps="false"
         android:textSize="12sp"
+        app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.14"
         app:layout_constraintStart_toStartOf="@id/jogo_botao_resposta1"
+        app:layout_constraintWidth_percent="0.47"
+        app:strokeColor="@color/cor_secundaria"
+        app:strokeWidth="2dp"
         tools:text="Houseki no Kuni" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/jogo_botao_resposta3"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="30dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/cor_primaria"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
         android:maxLines="2"
         android:textAllCaps="false"
         android:textSize="12sp"
+        app:cornerRadius="15dp"
         app:layout_constraintBottom_toTopOf="@id/jogo_botao_resposta4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.14"
+        app:layout_constraintWidth_percent="0.47"
+        app:strokeColor="@color/cor_secundaria"
+        app:strokeWidth="2dp"
         tools:text="Bem" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/jogo_botao_resposta4"
-        android:layout_width="150dp"
-        android:layout_height="70dp"
-        android:layout_marginBottom="30dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="4dp"
+        android:backgroundTint="@color/cor_primaria"
+        android:insetLeft="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
         android:maxLines="2"
         android:textAllCaps="false"
         android:textSize="12sp"
+        app:cornerRadius="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.14"
         app:layout_constraintStart_toStartOf="@id/jogo_botao_resposta3"
+        app:layout_constraintWidth_percent="0.47"
+        app:strokeColor="@color/cor_secundaria"
+        app:strokeWidth="2dp"
         tools:text="Banana fish" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

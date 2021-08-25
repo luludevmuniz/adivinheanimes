@@ -8,7 +8,7 @@
         />
 
     <solid
-        android:color="#0000FF"
+        android:color="@color/cor_primaria"
         />
 
 </shape>

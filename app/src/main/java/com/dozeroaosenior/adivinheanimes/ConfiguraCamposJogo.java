@@ -1,6 +1,5 @@
 package com.dozeroaosenior.adivinheanimes;
 
-import android.content.Context;
 import android.util.Log;
 
 import com.squareup.picasso.Picasso;
@@ -11,21 +10,21 @@ public class ConfiguraCamposJogo {
     InformacoesJogo informacoesJogo = new InformacoesJogo();
     Random random = new Random();
     int maxPopularidade = 0;
-    int minPopularidade = 100;
+    int minPopularidade = 10000;
     int randomNum;
     EstruturaAnime[] estruturaAnimes = new EstruturaAnime[4];
     int[] idsAnimes = new int[4];
 
     public EstruturaAnime[] fazRequisicaoNovoDesafio() {
         try {
-                    geraPopularidadeMaxima();
-                    while (informacoesJogo.popularidade == 0) {
-                    }
-                    geraPopularidadeAleatoria();
+            geraPopularidadeMaxima();
+            while (informacoesJogo.popularidade == 0) {
+            }
+            geraPopularidadeAleatoria();
 
-                    preencheEstruturaAnimes();
-                    while (estruturaAnimes[3].imagem == null) {
-                    }
+            preencheEstruturaAnimes();
+            while (estruturaAnimes[3].imagem == null) {
+            }
 
         } catch (Exception e) {
             Log.println(Log.ERROR, "Erro", e.toString());
