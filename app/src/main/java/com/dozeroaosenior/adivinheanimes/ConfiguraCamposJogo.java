@@ -10,7 +10,7 @@ public class ConfiguraCamposJogo {
     InformacoesJogo informacoesJogo = new InformacoesJogo();
     Random random = new Random();
     int maxPopularidade = 0;
-    int minPopularidade = 10000;
+    int minPopularidade = 150000;
     int randomNum;
     EstruturaAnime[] estruturaAnimes = new EstruturaAnime[4];
     int[] idsAnimes = new int[4];
@@ -72,16 +72,16 @@ public class ConfiguraCamposJogo {
 
     private int geraPopularidadeAleatoria() {
         try {
-//            maxPopularidade = informacoesJogo.popularidade;
-//            if (randomNum == 0) {
-//                randomNum = random.nextInt(maxPopularidade - minPopularidade) + minPopularidade;
-//            } else if ((randomNum + minPopularidade) < maxPopularidade) {
-//                randomNum = random.nextInt((randomNum + minPopularidade) - randomNum) + minPopularidade;
-//            } else {
-//                randomNum = random.nextInt(randomNum - minPopularidade) + minPopularidade;
-//            }
-            maxPopularidade = 80000;
-            randomNum = random.nextInt(maxPopularidade - minPopularidade) + minPopularidade;
+            maxPopularidade = informacoesJogo.popularidade;
+            if (randomNum == 0) {
+                randomNum = random.nextInt(maxPopularidade - minPopularidade) + minPopularidade;
+            } else if ((randomNum + minPopularidade) < maxPopularidade) {
+                randomNum = random.nextInt((randomNum + minPopularidade) - randomNum) + minPopularidade;
+            } else {
+                randomNum = random.nextInt(randomNum - minPopularidade) + minPopularidade;
+            }
+//            maxPopularidade = 80000;
+//            randomNum = random.nextInt(maxPopularidade - minPopularidade) + minPopularidade;
 
         } catch (Exception e) {
             System.out.println(e);

@@ -132,7 +132,7 @@ public class JogoActivity extends AppCompatActivity {
                         startActivity(intent);
                     } else {
                         Intent intent;
-                        intent = new Intent(this, FimDoJogoActivity.class);
+                        intent = new Intent(this, MainActivity.class);
                         startActivity(intent);
                     }
                     finish();

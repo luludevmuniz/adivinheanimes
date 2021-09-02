@@ -14,9 +14,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        vezesJogada = 0;
         ConfiguraCamposJogo configuraCamposJogo = new ConfiguraCamposJogo();
         estruturaAnimes = configuraCamposJogo.fazRequisicaoNovoDesafio();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        vezesJogada = 0;
     }
 
     public void iniciarJogo(View view) {
